@@ -1,27 +1,28 @@
-package src.menus;
+package com.mitienda.spring.menus;
 
 import java.util.List;
 import java.util.Scanner;
 
-import src.models.Categoria;
-import src.models.comun.DbObject;
+import com.mitienda.spring.controllers.CategoryController;
+
+import com.mitienda.spring.models.Categoria;
 
 public class MenuCategorias extends Menu {
 
 	public String toString() {
 		// TODO Auto-generated method stub
 		return 
-				"¿Qué acción quiere realizar? \n"+
-				"1.Crear nueva categoría \n"+
-				"2.Ver categorías \n"+
-				"3.Actualizar una categoría \n"+
-				"4.Borrar una categoría \n"+				
+				"ï¿½Quï¿½ acciï¿½n quiere realizar? \n"+
+				"1.Crear nueva categorï¿½a \n"+
+				"2.Ver categorï¿½as \n"+
+				"3.Actualizar una categorï¿½a \n"+
+				"4.Borrar una categorï¿½a \n"+				
 				
-				"0.Volver al menú principal"	;
+				"0.Volver al menï¿½ principal"	;
 	}
 	
 	
-	
+	CategoryController catCtrl = CategoryController.getInstance();
 	
 	@Override
 	public Menu siguienteMenu(String opcion) {
@@ -35,17 +36,17 @@ public class MenuCategorias extends Menu {
 					break;
 
 				case "3": 
-					actualizarCategoria();
+					//actualizarCategoria();
 					break;
 				case "4": 
-					borrarCategoria();
+					//borrarCategoria();
 					break;
 					
 				case "0":
 					return new MenuPrincipal();
 					
 				default:
-					System.out.println("Opción no válida");
+					System.out.println("Opciï¿½n no vï¿½lida");
 					break;
 				}			
 				return new MenuCategorias();
@@ -54,30 +55,29 @@ public class MenuCategorias extends Menu {
 
 	private void crearCategoria() {
 		Categoria cat = new Categoria();
-		System.out.println("Introduzca un nombre para la categoría");
+		System.out.println("Introduzca un nombre para la categorï¿½a");
 		cat.setNombre(MenuController.campoValido("^[^,]+$"));
-		cat.save();
+		catCtrl.save(cat);
 	}
 	
 	
-	private void verCategorias() {
-		Categoria cat = new Categoria();		
-		List<DbObject> listaCat = cat.list();
+	private void verCategorias() {	
+		List<Categoria> listaCat = catCtrl.list();
 		System.out.println("Tabla Categoria: ");
 		System.out.println("ID \t Nombre");
-		for(DbObject obj : listaCat) {
-			cat = (Categoria)obj;
+		for(Categoria cat : listaCat) {
+			
 			System.out.print(cat.getId() +"\t");
 			System.out.print(cat.getNombre()+"\n");			
 		}		
 	}
-	
+	/*
 	private void actualizarCategoria() {
 		Categoria cat = MenuController.eligeCategoria();
 		if (cat == null) {
 			return;
 		}
-		System.out.println("Introduzca un nombre para la categoría");
+		System.out.println("Introduzca un nombre para la categorï¿½a");
 		cat.setNombre(MenuController.campoValido("^[^,]+$"));
 		cat.save();		
 	}
@@ -89,7 +89,7 @@ public class MenuCategorias extends Menu {
 		}
 		cat.delete();		
 	}
-
+*/
 
 	
 	

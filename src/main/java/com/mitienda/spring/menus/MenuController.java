@@ -1,4 +1,4 @@
-package src.menus;
+package com.mitienda.spring.menus;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -7,12 +7,11 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import src.models.Categoria;
-import src.models.Clientes;
-import src.models.Factura;
-import src.models.FacturaLinea;
-import src.models.Producto;
-import src.models.comun.DbObject;
+import com.mitienda.spring.models.Categoria;
+import com.mitienda.spring.models.Clientes;
+import com.mitienda.spring.models.Factura;
+import com.mitienda.spring.models.FacturaLinea;
+import com.mitienda.spring.models.Producto;
 
 public class MenuController {
 	
@@ -51,7 +50,7 @@ public class MenuController {
 		opcion = this.keyboard.nextLine();
 		menu = menu.siguienteMenu(opcion);
 	}
-	
+	/*
 	public  DbObject seleccionarObjeto(DbObject obj) {	
 		
 		int id=-1;
@@ -68,7 +67,7 @@ public class MenuController {
 		try {
 			id = Integer.parseInt(this.keyboard.nextLine());
 		}catch(NumberFormatException ex){
-			System.out.println("Id no válida");
+			System.out.println("Id no vï¿½lida");
 			return null;
 		}
 		DbObject pedido = obj.getByid(id);
@@ -76,13 +75,13 @@ public class MenuController {
 		
 		return pedido; 
 	}
-	
+	*/
 	private String validarCampo(String regex) {		
 		String datos;	
 		datos = keyboard.nextLine();		
 		
 		while (!Pattern.matches(regex, datos)) {		
-				System.out.println("El valor introducido para el campo no es válido");
+				System.out.println("El valor introducido para el campo no es vï¿½lido");
 				datos = keyboard.nextLine();										
 		}
 		return datos;
@@ -92,7 +91,7 @@ public class MenuController {
 	public static String campoValido(String regex) {
 		return MenuController.getInstance().validarCampo(regex);
 	}	
-	
+	/*
 	public static Factura eligeFactura() {
 		return (Factura)MenuController.getInstance().seleccionarObjeto(new Factura());
 	}
@@ -133,5 +132,5 @@ public class MenuController {
 		}
 		return fecha;
 	}
-	
+	*/
 }

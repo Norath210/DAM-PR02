@@ -1,8 +1,7 @@
-package src.menus;
+package com.mitienda.spring.menus;
 
 import java.util.List;
-import src.models.Clientes;
-import src.models.comun.DbObject;
+import com.mitienda.spring.models.Clientes;
 
 public class MenuClientes extends Menu {
 	
@@ -10,14 +9,14 @@ public class MenuClientes extends Menu {
 	public String toString() {
 		
 		return 
-				"¿Qué acción quiere realizar? \n"+
+				"ï¿½Quï¿½ acciï¿½n quiere realizar? \n"+
 				"1.Crear nuevo cliente \n"+
 				"2.Ver clientes\n"+
 				"3.Ver detalles de un cliente\n"+
 				"4.Actualizar un cliente \n"+
 				"5.Borrar un cliente \n"+			
 				
-				"0.Volver al menú principal"	;
+				"0.Volver al menï¿½ principal"	;
 	}
 	
 	@Override
@@ -25,29 +24,29 @@ public class MenuClientes extends Menu {
 				
 				switch (opcion) {
 				case "1":
-					crearCliente();
+				//	crearCliente();
 					break;
 				case "2":
-					verCliente();
+				//	verCliente();
 					break;
 				case "3":
-					verDetallesCliente();
+				//	verDetallesCliente();
 					break;	
 				case "4": 
-					actualizarCliente();
+				//	actualizarCliente();
 					break;
 				case "5": 
-					borrarCliente();
+				//	borrarCliente();
 					break;					
 				case "0":
 					return new MenuPrincipal();
 				default:
-					System.out.println("Opción no válida");
+					System.out.println("Opciï¿½n no vï¿½lida");
 					break;
 				}
 		return new MenuClientes();		
 	}
-
+/*
 	private void verDetallesCliente() { 
 		Clientes cli = MenuController.eligeCliente();
 		if (cli == null) {
@@ -55,7 +54,7 @@ public class MenuClientes extends Menu {
 		}
 		System.out.println("Nombre: \t"+cli.getNombre());
 		System.out.println("DNI: \t"+cli.getDni());
-		System.out.println("Dirección: \t"+cli.getDireccion());
+		System.out.println("Direcciï¿½n: \t"+cli.getDireccion());
 		System.out.println("Telefono: \t"+cli.getTelefono());
 		System.out.println("Email: \t"+cli.getEmail());
 		
@@ -67,7 +66,7 @@ public class MenuClientes extends Menu {
 		cli.setNombre(MenuController.campoValido("^[^,]+$"));
 		System.out.println("Introduzca el dni del cliente");
 		cli.setDni(MenuController.campoValido("^[^,]+$"));
-		System.out.println("Introduzca dirección: ");
+		System.out.println("Introduzca direcciï¿½n: ");
 		cli.setDireccion(MenuController.campoValido("^[^,]+$"));
 		System.out.println("Introduzca telefono: ");
 		cli.setTelefono(MenuController.campoValido("^[^,]+$"));
@@ -99,7 +98,7 @@ public class MenuClientes extends Menu {
 		cli.setNombre(MenuController.campoValido("^[^,]+$"));
 		System.out.println("Introduzca el dni del cliente Actual: "+cli.getDni());
 		cli.setDni(MenuController.campoValido("\\d{8}[A-HJ-NP-TV-Z]"));
-		System.out.println("Introduzca dirección: Actual:"+cli.getDireccion());
+		System.out.println("Introduzca direcciï¿½n: Actual:"+cli.getDireccion());
 		cli.setDireccion(MenuController.campoValido("^[^,]+$"));
 		System.out.println("Introduzca telefono: Actual: "+cli.getTelefono());
 		cli.setTelefono(MenuController.campoValido("^[^,]+$"));
@@ -115,7 +114,7 @@ public class MenuClientes extends Menu {
 		}
 		cli.delete();		
 	}
-	
+	*/
 	
 
 }

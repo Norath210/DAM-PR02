@@ -1,4 +1,4 @@
-package src.menus;
+package com.mitienda.spring.menus;
 
 
 public class MenuPrincipal extends Menu{
@@ -13,8 +13,8 @@ public class MenuPrincipal extends Menu{
 	public String toString() {
 		// TODO Auto-generated method stub
 		return 
-				"¿Qué tabla quiere manejar? \n"+
-				"1.Categoría \n"+
+				"ï¿½Quï¿½ tabla quiere manejar? \n"+
+				"1.Categorï¿½a \n"+
 				"2.Clientes \n"+
 				"3.Factura \n"+
 				"4.Producto \n"+
@@ -37,7 +37,7 @@ public class MenuPrincipal extends Menu{
 		case "0":
 			return null;
 		default:
-			System.out.println("Opción no válida");
+			System.out.println("Opciï¿½n no vï¿½lida");
 			return new MenuPrincipal();		
 		}
 	}

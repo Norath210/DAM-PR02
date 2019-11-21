@@ -1,21 +1,22 @@
-package src.menus;
+package com.mitienda.spring.menus;
 
 
 import java.util.List;
 
-import src.models.Clientes;
-import src.models.Factura;
-import src.models.FacturaLinea;
-import src.models.Producto;
-import src.models.comun.DbObject;
+import com.mitienda.spring.models.Categoria;
+import com.mitienda.spring.models.Clientes;
+import com.mitienda.spring.models.Factura;
+import com.mitienda.spring.models.FacturaLinea;
+import com.mitienda.spring.models.Producto;
+
 
 public class MenuFacturas extends Menu {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return 
-				"¿Qué acción quiere realizar? \n"+
+				"ï¿½Quï¿½ acciï¿½n quiere realizar? \n"+
 				"1.Crear nueva factura \n"+
-				"2.Añadir una linea a una factura existente \n"+
+				"2.Aï¿½adir una linea a una factura existente \n"+
 				"3.Ver facturas\n"+
 				"4.Ver lineas de una factura\n"+
 				"5.Editar una factura \n"+
@@ -23,7 +24,7 @@ public class MenuFacturas extends Menu {
 				"7.Borrar una factura \n"+	
 				"8.Borrar una linea de una factura \n"+
 				
-				"0.Volver al menú principal"	;
+				"0.Volver al menï¿½ principal"	;
 		
 	}
 	
@@ -31,33 +32,33 @@ public class MenuFacturas extends Menu {
 				
 				switch (opcion) {
 				case "1":
-					crearFactura();
+					//crearFactura();
 					break;
 				case "2":
-					crearLineaFactura();
+					//crearLineaFactura();
 					break;
 				case "3": 
-					verFacturas();
+					//verFacturas();
 					break;
 				case "4": 
-					verLineasFactura();
+					//verLineasFactura();
 					break;
 				case "5":
-					editarFactura();
+					//editarFactura();
 					break;
 				case "6":
-					editarLineaFactura();
+					//editarLineaFactura();
 					break;
 				case "7":	
-					borrarFactura();
+					//borrarFactura();
 					break;		
 				case "8":
-					borrarLineaFactura();
+					//borrarLineaFactura();
 					break;
 				case "0":
 					return new MenuPrincipal();
 				default:
-					System.out.println("Opción no válida");
+					System.out.println("Opciï¿½n no vï¿½lida");
 					break;
 				
 				}
@@ -65,7 +66,7 @@ public class MenuFacturas extends Menu {
 	}
 	
 	
-	
+	/*
 	private void editarLineaFactura() {
 		FacturaLinea fl = MenuController.eligeLineaFactura();
 		
@@ -189,7 +190,7 @@ public class MenuFacturas extends Menu {
 		fac.save();
 		
 	}
-	
+	*/
 	
 
 

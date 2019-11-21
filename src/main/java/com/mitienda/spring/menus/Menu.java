@@ -1,4 +1,4 @@
-package src.menus;
+package com.mitienda.spring.menus;
 
 public abstract class Menu {
 

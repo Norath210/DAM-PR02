@@ -1,23 +1,22 @@
-package src.menus;
+package com.mitienda.spring.menus;
 
 import java.util.List;
 
-import src.models.Categoria;
-import src.models.Producto;
-import src.models.comun.DbObject;
+import com.mitienda.spring.models.Categoria;
+import com.mitienda.spring.models.Producto;
 
 public class MenuProductos extends Menu {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return 
-				"¿Qué acción quiere realizar? \n"+
+				"ï¿½Quï¿½ acciï¿½n quiere realizar? \n"+
 				"1.Crear nuevo producto \n"+
 				"2.Ver productos \n"+
-				"3.Ver productos de una categoría\n"+
+				"3.Ver productos de una categorï¿½a\n"+
 				"4.Editar un producto\n"+
 				"5.Borrar un producto \n"+	
 				
-				"0.Volver al menú principal"	;
+				"0.Volver al menï¿½ principal"	;
 		
 	}
 	
@@ -25,38 +24,38 @@ public class MenuProductos extends Menu {
 				
 				switch (opcion) {
 				case "1":
-					crearProducto();
+					//crearProducto();
 					break;
 				case "2":
-					verProductos();
+					//verProductos();
 					break;
 				case "3": 
-					verProductosCat();
+					//verProductosCat();
 					break;
 				case "4": 
-					editarProducto();
+					//editarProducto();
 					break;
 				case "5":
-					borrarProducto();
+					//borrarProducto();
 					break;				
 				case "0":
 					return new MenuPrincipal();
 				default:
-					System.out.println("Opción no válida");
+					System.out.println("Opciï¿½n no vï¿½lida");
 					break;
 				
 		}
 		return new MenuProductos();		
 	}
-
+/* 
 	private void crearProducto() {
 		Producto prod = new Producto();
 		
 		
-		System.out.println("Elija la categoría del producto");
+		System.out.println("Elija la categorï¿½a del producto");
 		Categoria cat = MenuController.eligeCategoria();
 		if (cat == null) {
-			System.out.println("Categoría no válida");
+			System.out.println("Categorï¿½a no vï¿½lida");
 			return;
 		}
 
@@ -81,7 +80,7 @@ public class MenuProductos extends Menu {
 	private void verProductosCat() {
 		Categoria cat = MenuController.eligeCategoria();
 		if(cat== null) {
-			System.out.println("Categoría no encontrada");
+			System.out.println("Categorï¿½a no encontrada");
 			return;
 		}
 		List<DbObject> prodList =  new Producto().list();		
@@ -99,10 +98,10 @@ public class MenuProductos extends Menu {
 			System.out.println("Producto no encontrado");
 			return;
 		}
-		System.out.println("Elija la nueva categoría del producto");
+		System.out.println("Elija la nueva categorï¿½a del producto");
 		Categoria cat = MenuController.eligeCategoria();
 		if (cat == null) {
-			System.out.println("Categoría no válida");
+			System.out.println("Categorï¿½a no vï¿½lida");
 			return;
 		}
 		
@@ -126,7 +125,7 @@ public class MenuProductos extends Menu {
 		prod.delete();
 		
 	}
-	
+	*/
 	
 	
 	
