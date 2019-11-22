@@ -62,7 +62,9 @@ public class MenuCategorias extends Menu {
 	
 	
 	private void verCategorias() {	
+		System.out.println("Ha entrado en ver");
 		List<Categoria> listaCat = catCtrl.list();
+		System.out.println(listaCat == null);
 		System.out.println("Tabla Categoria: ");
 		System.out.println("ID \t Nombre");
 		for(Categoria cat : listaCat) {

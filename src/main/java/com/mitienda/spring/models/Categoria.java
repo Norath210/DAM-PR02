@@ -2,6 +2,7 @@ package com.mitienda.spring.models;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -9,10 +10,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "categorias", catalog = "dialer")
 public class Categoria implements java.io.Serializable {
-
+	
 	@Id
 	private Integer id;
+	@Column(name = "created")
 	private Date created;
+	@Column(name = "name")
 	private String nombre;
 
 	public Integer getId() {

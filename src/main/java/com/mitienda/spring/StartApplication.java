@@ -2,13 +2,16 @@ package com.mitienda.spring;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.mitienda.spring.menus.MenuController;
+
 @SpringBootApplication
 public class StartApplication implements CommandLineRunner {
-
+	
 	private static final Logger log = LoggerFactory.getLogger(StartApplication.class);
 
 	public static void main(String[] args) {
@@ -23,7 +26,8 @@ public class StartApplication implements CommandLineRunner {
 		 * Aqui controlar los Menus y el cambio entre ellos. Y En cada menu; usar su
 		 * respectivo Controller y Repository
 		 */
-
+		
+		MenuController.getInstance().callMenus();
 	}
 
 }

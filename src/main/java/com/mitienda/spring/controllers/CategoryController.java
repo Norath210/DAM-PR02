@@ -24,8 +24,75 @@ public class CategoryController {
 		return instance;
 	}
 
-	@Autowired
-	private CategoriasRepository repository;
+	
+	private CategoriasRepository repository = new CategoriasRepository() {
+		
+		@Override
+		public <S extends Categoria> Iterable<S> saveAll(Iterable<S> entities) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public <S extends Categoria> S save(S entity) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Optional<Categoria> findById(Long id) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Iterable<Categoria> findAllById(Iterable<Long> ids) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Iterable<Categoria> findAll() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public boolean existsById(Long id) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public void deleteById(Long id) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void deleteAll(Iterable<? extends Categoria> entities) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void deleteAll() {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void delete(Categoria entity) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public long count() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+	};
 
 	/**
 	 * Guarda o Actualiza un objecto
@@ -52,6 +119,10 @@ public class CategoryController {
 		ArrayList<Categoria> ret = new ArrayList<>();
 	    for(Categoria t : repository.findAll()) {
 	        ret.add(t);
+	    }
+	    if (ret.isEmpty()) {
+	    	System.out.println("NO HAY NADA QUE DAR");
+	    	return null;
 	    }
 	    return ret;
 	}
