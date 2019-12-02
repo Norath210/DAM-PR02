@@ -2,10 +2,14 @@ package com.mitienda.spring.menus;
 
 import java.util.List;
 
+import com.mitienda.spring.controllers.ProductoController;
 import com.mitienda.spring.models.Categoria;
 import com.mitienda.spring.models.Producto;
 
 public class MenuProductos extends Menu {
+
+	private static ProductoController  prodCtrl = ProductoController.getInstance();
+	
 	public String toString() {
 		// TODO Auto-generated method stub
 		return 
@@ -24,19 +28,19 @@ public class MenuProductos extends Menu {
 				
 				switch (opcion) {
 				case "1":
-					//crearProducto();
+					crearProducto();
 					break;
 				case "2":
-					//verProductos();
+					verProductos();
 					break;
 				case "3": 
-					//verProductosCat();
+					verProductosCat();
 					break;
 				case "4": 
-					//editarProducto();
+					editarProducto();
 					break;
 				case "5":
-					//borrarProducto();
+					borrarProducto();
 					break;				
 				case "0":
 					return new MenuPrincipal();
@@ -47,7 +51,7 @@ public class MenuProductos extends Menu {
 		}
 		return new MenuProductos();		
 	}
-/* 
+ 
 	private void crearProducto() {
 		Producto prod = new Producto();
 		
@@ -67,12 +71,12 @@ public class MenuProductos extends Menu {
 		prod.setStock(Integer.parseInt(MenuController.campoValido("^[^,]+$")));
 		
 		prod.setId_categoria(cat.getId());
-		prod.save();
+		prodCtrl.save(prod);
 	}
 
 	private void verProductos() {
-		List<DbObject> prodList =  new Producto().list();
-		for(DbObject obj : prodList) {			
+		List<Producto> prodList =  prodCtrl.list();
+		for(Producto obj : prodList) {			
 			System.out.println(obj.getId()+" "+obj.toString());
 		}
 	}
@@ -83,8 +87,8 @@ public class MenuProductos extends Menu {
 			System.out.println("Categor�a no encontrada");
 			return;
 		}
-		List<DbObject> prodList =  new Producto().list();		
-		for(DbObject obj : prodList) {
+		List<Producto> prodList =  prodCtrl.list();	
+		for(Producto obj : prodList) {
 			Producto prod = (Producto) obj;
 			if(prod.getId_categoria() == cat.getId()) {
 				System.out.println(prod.getId()+" "+prod.toString());
@@ -113,7 +117,7 @@ public class MenuProductos extends Menu {
 		prod.setStock(Integer.parseInt(MenuController.campoValido("^[^,]+$")));
 		
 		prod.setId_categoria(cat.getId());
-		prod.save();
+		prodCtrl.save(prod);
 	}
 
 	private void borrarProducto() {
@@ -122,10 +126,10 @@ public class MenuProductos extends Menu {
 			System.out.println("Producto no encontrado");
 			return;
 		}
-		prod.delete();
+		prodCtrl.delete(prod);
 		
 	}
-	*/
+	
 	
 	
 	

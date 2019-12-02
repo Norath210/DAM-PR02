@@ -36,10 +36,10 @@ public class MenuCategorias extends Menu {
 					break;
 
 				case "3": 
-					//actualizarCategoria();
+					actualizarCategoria();
 					break;
 				case "4": 
-					//borrarCategoria();
+					borrarCategoria();
 					break;
 					
 				case "0":
@@ -73,7 +73,7 @@ public class MenuCategorias extends Menu {
 			System.out.print(cat.getNombre()+"\n");			
 		}		
 	}
-	/*
+	
 	private void actualizarCategoria() {
 		Categoria cat = MenuController.eligeCategoria();
 		if (cat == null) {
@@ -81,7 +81,7 @@ public class MenuCategorias extends Menu {
 		}
 		System.out.println("Introduzca un nombre para la categor�a");
 		cat.setNombre(MenuController.campoValido("^[^,]+$"));
-		cat.save();		
+		catCtrl.save(cat);		
 	}
 	private void borrarCategoria() {		
 		Categoria cat = MenuController.eligeCategoria();
@@ -89,9 +89,9 @@ public class MenuCategorias extends Menu {
 			
 			return;
 		}
-		cat.delete();		
+		catCtrl.delete(cat);		
 	}
-*/
+
 
 	
 	

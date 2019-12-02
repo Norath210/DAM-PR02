@@ -1,8 +1,14 @@
 package com.mitienda.spring.menus;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.mitienda.spring.controllers.CategoryController;
+import com.mitienda.spring.controllers.ClienteController;
+import com.mitienda.spring.controllers.FacturaController;
+import com.mitienda.spring.controllers.FacturaLineaController;
+import com.mitienda.spring.controllers.ProductoController;
 import com.mitienda.spring.models.Categoria;
 import com.mitienda.spring.models.Clientes;
 import com.mitienda.spring.models.Factura;
@@ -10,7 +16,15 @@ import com.mitienda.spring.models.FacturaLinea;
 import com.mitienda.spring.models.Producto;
 
 
+
 public class MenuFacturas extends Menu {
+	
+	
+	private static FacturaController facCtrl = FacturaController.getInstance();
+	private static FacturaLineaController flCtrl = FacturaLineaController.getInstance();
+	
+	
+	
 	public String toString() {
 		// TODO Auto-generated method stub
 		return 
@@ -32,28 +46,28 @@ public class MenuFacturas extends Menu {
 				
 				switch (opcion) {
 				case "1":
-					//crearFactura();
+					crearFactura();
 					break;
 				case "2":
-					//crearLineaFactura();
+					crearLineaFactura();
 					break;
 				case "3": 
-					//verFacturas();
+					verFacturas();
 					break;
 				case "4": 
-					//verLineasFactura();
+					verLineasFactura();
 					break;
 				case "5":
-					//editarFactura();
+					editarFactura();
 					break;
 				case "6":
-					//editarLineaFactura();
+					editarLineaFactura();
 					break;
 				case "7":	
-					//borrarFactura();
+					borrarFactura();
 					break;		
 				case "8":
-					//borrarLineaFactura();
+					borrarLineaFactura();
 					break;
 				case "0":
 					return new MenuPrincipal();
@@ -66,7 +80,7 @@ public class MenuFacturas extends Menu {
 	}
 	
 	
-	/*
+	
 	private void editarLineaFactura() {
 		FacturaLinea fl = MenuController.eligeLineaFactura();
 		
@@ -88,24 +102,29 @@ public class MenuFacturas extends Menu {
 	}
 
 	private void borrarLineaFactura() {
-		Factura fac = MenuController.eligeFactura();
-		List<DbObject> listFl = new FacturaLinea().getByCampos("id_factura",fac.getId()+"");
-		for(DbObject obj: listFl) {
-			System.out.println(obj.getId()+" "+obj);
-		}
+		
 		FacturaLinea fl = MenuController.eligeLineaFactura();
-		fl.delete();
+		flCtrl.delete(fl);
 		
 	}
 
 	private void borrarFactura() {
 		Factura fac = MenuController.eligeFactura();
-		List<DbObject> listFl = new FacturaLinea().getByCampos("id_factura",fac.getId()+"");
-		for(DbObject obj: listFl) {
-			obj.delete();
+		List<FacturaLinea> listAllFl = flCtrl.list();
+		List<FacturaLinea> listFl = new ArrayList<>();
+		
+		
+		for(FacturaLinea obj: listAllFl) {
+			if(obj.getId_factura() == fac.getId()) {
+				listFl.add(obj);
+			}
 		}
 		
-		fac.delete();
+		for(FacturaLinea obj: listFl) {
+			flCtrl.delete(obj);
+		}
+		
+		facCtrl.delete(fac);
 		
 	}
 
@@ -136,9 +155,18 @@ public class MenuFacturas extends Menu {
 	private void verLineasFactura() {
 		Factura fac = MenuController.eligeFactura();
 		
-		List<DbObject> listFl = new FacturaLinea().getByCampos("id_factura",fac.getId()+"");
-		for(DbObject obj: listFl) {
-			System.out.println(obj.getId()+" "+obj);
+		List<FacturaLinea> listAllFl = flCtrl.list();
+		List<FacturaLinea> listFl = new ArrayList<>();
+		
+		
+		for(FacturaLinea obj: listAllFl) {
+			if(obj.getId_factura() == fac.getId()) {
+				listFl.add(obj);
+			}
+		}
+		
+		for(FacturaLinea obj: listFl) {
+			System.out.println(obj.getId()+" "+obj.toString());
 		}
 				
 				
@@ -146,9 +174,9 @@ public class MenuFacturas extends Menu {
 	}
 
 	private void verFacturas() {
-		List<DbObject> facList = new Factura().list();
+		List<Factura> facList = facCtrl.list();
 		
-		for(DbObject obj: facList ) {
+		for(Factura obj: facList ) {
 			System.out.println(obj.getId()+ " " +obj.toString());
 		}
 		
@@ -166,7 +194,7 @@ public class MenuFacturas extends Menu {
 		fl.setNombre(prod.getNombre());
 		fl.setPrecio(Integer.parseInt(MenuController.campoValido("^\\d+$")));
 		
-		fl.save();
+		flCtrl.save(fl);
 	}
 
 	private void crearFactura() {
@@ -187,10 +215,10 @@ public class MenuFacturas extends Menu {
 		fac.setSerie(Integer.parseInt(MenuController.campoValido("^\\d+$")));
 		fac.setId_cliente(cli.getId());
 			
-		fac.save();
+		facCtrl.save(fac);
 		
 	}
-	*/
+	
 	
 
 

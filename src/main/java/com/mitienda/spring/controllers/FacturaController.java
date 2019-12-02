@@ -5,25 +5,26 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-import com.mitienda.spring.models.Categoria;
-import com.mitienda.spring.repositories.CategoriasRepository;
+import com.mitienda.spring.models.Factura;
+import com.mitienda.spring.repositories.FacturaRepository;
 
-public class CategoryController {
+public class FacturaController {
 
-	private static CategoryController instance;
+	private static FacturaController instance;
 
-	 
-	public static CategoryController getInstance() {
+	private FacturaController() {
+	}
+
+	public static FacturaController getInstance() {
 		if (instance == null) {
-			instance = new CategoryController();
+			instance = new FacturaController();
 		}
 		return instance;
 	}
 
 	@Autowired
-	private CategoriasRepository repository;
+	private FacturaRepository repository;
 
 	/**
 	 * Guarda o Actualiza un objecto
@@ -31,7 +32,7 @@ public class CategoryController {
 	 * @param cat
 	 * @return
 	 */
-	public Categoria save(Categoria cat) {
+	public Factura save(Factura cat) {
 		return repository.save(cat);
 	}
 
@@ -47,11 +48,9 @@ public class CategoryController {
 	 * 
 	 * @return Devuelve todos los Objectos de la Tabla
 	 */
-	public List<Categoria> list() {
-		ArrayList<Categoria> ret = new ArrayList<>();
-		System.out.println("CHECK:" + (repository == null));
-
-		for (Categoria t : repository.findAll()) {
+	public List<Factura> list() {
+		ArrayList<Factura> ret = new ArrayList<>();
+		for (Factura t : repository.findAll()) {
 			ret.add(t);
 		}
 		return ret;
@@ -62,7 +61,7 @@ public class CategoryController {
 	 * 
 	 * @param cat - <strong>TIENE QUE TENER ID</strong>
 	 */
-	public void delete(Categoria cat) {
+	public void delete(Factura cat) {
 		repository.delete(cat);
 	}
 
@@ -81,8 +80,8 @@ public class CategoryController {
 	 * @return Devuelve el Objecto que corresponda con el ID o null en caso de no
 	 *         existir en la base de datos
 	 */
-	public Categoria findById(Long id) {
-		Optional<Categoria> item = repository.findById(id);
+	public Factura findById(Long id) {
+		Optional<Factura> item = repository.findById(id);
 		// item..ifPresent(x -> System.out.println(x)); // Devuelve el objecto si existe
 		if (!item.isPresent()) {
 			return null;

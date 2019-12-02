@@ -5,25 +5,28 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-import com.mitienda.spring.models.Categoria;
-import com.mitienda.spring.repositories.CategoriasRepository;
+import com.mitienda.spring.models.Factura;
+import com.mitienda.spring.models.FacturaLinea;
+import com.mitienda.spring.repositories.FacturaLineaRepository;
+import com.mitienda.spring.repositories.FacturaRepository;
 
-public class CategoryController {
+public class FacturaLineaController {
 
-	private static CategoryController instance;
+	private static FacturaLineaController instance;
 
-	 
-	public static CategoryController getInstance() {
+	private FacturaLineaController() {
+	}
+
+	public static FacturaLineaController getInstance() {
 		if (instance == null) {
-			instance = new CategoryController();
+			instance = new FacturaLineaController();
 		}
 		return instance;
 	}
 
 	@Autowired
-	private CategoriasRepository repository;
+	private FacturaLineaRepository repository;
 
 	/**
 	 * Guarda o Actualiza un objecto
@@ -31,8 +34,8 @@ public class CategoryController {
 	 * @param cat
 	 * @return
 	 */
-	public Categoria save(Categoria cat) {
-		return repository.save(cat);
+	public FacturaLinea save(FacturaLinea fl) {
+		return repository.save(fl);
 	}
 
 	/**
@@ -47,11 +50,9 @@ public class CategoryController {
 	 * 
 	 * @return Devuelve todos los Objectos de la Tabla
 	 */
-	public List<Categoria> list() {
-		ArrayList<Categoria> ret = new ArrayList<>();
-		System.out.println("CHECK:" + (repository == null));
-
-		for (Categoria t : repository.findAll()) {
+	public List<FacturaLinea> list() {
+		ArrayList<FacturaLinea> ret = new ArrayList<>();
+		for (FacturaLinea t : repository.findAll()) {
 			ret.add(t);
 		}
 		return ret;
@@ -62,7 +63,7 @@ public class CategoryController {
 	 * 
 	 * @param cat - <strong>TIENE QUE TENER ID</strong>
 	 */
-	public void delete(Categoria cat) {
+	public void delete(FacturaLinea cat) {
 		repository.delete(cat);
 	}
 
@@ -81,8 +82,8 @@ public class CategoryController {
 	 * @return Devuelve el Objecto que corresponda con el ID o null en caso de no
 	 *         existir en la base de datos
 	 */
-	public Categoria findById(Long id) {
-		Optional<Categoria> item = repository.findById(id);
+	public FacturaLinea findById(Long id) {
+		Optional<FacturaLinea> item = repository.findById(id);
 		// item..ifPresent(x -> System.out.println(x)); // Devuelve el objecto si existe
 		if (!item.isPresent()) {
 			return null;

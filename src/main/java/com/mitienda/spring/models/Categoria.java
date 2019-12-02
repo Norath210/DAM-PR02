@@ -2,20 +2,20 @@ package com.mitienda.spring.models;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "categorias", catalog = "dialer")
+@Table(name = "categorias")
 public class Categoria implements java.io.Serializable {
-	
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	@Column(name = "created")
 	private Date created;
-	@Column(name = "name")
 	private String nombre;
 
 	public Integer getId() {

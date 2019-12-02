@@ -1,10 +1,13 @@
 package com.mitienda.spring.menus;
 
 import java.util.List;
+
+import com.mitienda.spring.controllers.ClienteController;
 import com.mitienda.spring.models.Clientes;
 
 public class MenuClientes extends Menu {
-	
+
+	private static ClienteController cliCtrl  = ClienteController.getInstance();
 	
 	public String toString() {
 		
@@ -24,19 +27,19 @@ public class MenuClientes extends Menu {
 				
 				switch (opcion) {
 				case "1":
-				//	crearCliente();
+					crearCliente();
 					break;
 				case "2":
-				//	verCliente();
+					verCliente();
 					break;
 				case "3":
-				//	verDetallesCliente();
+					verDetallesCliente();
 					break;	
 				case "4": 
-				//	actualizarCliente();
+					actualizarCliente();
 					break;
 				case "5": 
-				//	borrarCliente();
+					borrarCliente();
 					break;					
 				case "0":
 					return new MenuPrincipal();
@@ -46,7 +49,7 @@ public class MenuClientes extends Menu {
 				}
 		return new MenuClientes();		
 	}
-/*
+
 	private void verDetallesCliente() { 
 		Clientes cli = MenuController.eligeCliente();
 		if (cli == null) {
@@ -72,16 +75,14 @@ public class MenuClientes extends Menu {
 		cli.setTelefono(MenuController.campoValido("^[^,]+$"));
 		System.out.println("Introduzca email: ");
 		cli.setEmail(MenuController.campoValido("^[A-Za-z0-9+_.-]+@(.+)$"));
-		cli.save();		
+		cliCtrl.save(cli);
 		
 	}
-	private void verCliente() {
-		Clientes cli = new Clientes();		
-		List<DbObject> listaCat = cli.list();
+	private void verCliente() {		
+		List<Clientes> listaCat = cliCtrl.list();
 		System.out.println("Tabla Categoria: ");
 		System.out.println("ID \t Nombre");
-		for(DbObject obj : listaCat) {
-			cli = (Clientes)obj;
+		for(Clientes cli : listaCat) {
 			System.out.print(cli.getId() +"\t");
 			System.out.print(cli.getNombre()+"\n");			
 		}		
@@ -104,7 +105,7 @@ public class MenuClientes extends Menu {
 		cli.setTelefono(MenuController.campoValido("^[^,]+$"));
 		System.out.println("Introduzca email: Actual: "+cli.getEmail());
 		cli.setEmail(MenuController.campoValido("^[A-Za-z0-9+_.-]+@(.+)$"));
-		cli.save();			
+		cliCtrl.save(cli);			
 	}
 	private void borrarCliente() {
 		Clientes cli = MenuController.eligeCliente();	
@@ -112,9 +113,9 @@ public class MenuClientes extends Menu {
 			System.out.println("No existe el cliente a borrar");
 			return;
 		}
-		cli.delete();		
+		cliCtrl.delete(cli);		
 	}
-	*/
+	
 	
 
 }
