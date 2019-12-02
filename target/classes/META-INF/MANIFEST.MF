@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
-Built-By: Norath
-Build-Jdk: 12.0.1
+Built-By: Castelao
+Build-Jdk: 13.0.1
 Implementation-Title: miTienda - Spring Boot + Mysql
 Implementation-Version: 1.0
 Implementation-Vendor-Id: org.springframework.boot

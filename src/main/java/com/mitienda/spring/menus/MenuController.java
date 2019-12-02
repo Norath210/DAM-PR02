@@ -104,6 +104,9 @@ public class MenuController {
 	}
 	
 	public static FacturaLinea eligeLineaFactura() {	
+		
+		
+		
 		int id;
 		Factura fac = MenuController.eligeFactura();
 		List<FacturaLinea> listAllFl = flCtrl.list();
